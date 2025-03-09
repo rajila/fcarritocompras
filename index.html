@@ -12,43 +12,33 @@
   <body>
     <header class="">
       <nav class="container navbar h-menu">
-          <div class="logo">
-            <a class="navbar-brand content-logo-texto" href="index.html">Book's Shop</a>
-          </div>
-
-        
-
+        <div class="logo">
+          <a class="navbar-brand content-logo-texto" href="index.html">Book's Shop</a>
+        </div>
         <div style="justify-content: end; display: flex;">
-
-        
-        <div class="icons">
-          <div class="mx-2" style="display: flex;">
-            <section class="mt-2 mx-2 rounded-circle p-2 navbar-toggler1" style="background-color: black; color: white;"style="background-color: black; color: white;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
-                <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4m9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
+          <div class="icons">
+            <div class="mx-2" style="display: flex;">
+              <section class="btnMenu mt-2 mx-2 rounded-circle p-2" style="background-color: black; color: white;"style="background-color: black; color: white;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
+                  <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4m9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
+                </svg>
+              </section>
+              <section onclick="MenuInstance.handleOpenCarrito();" class="btnMenu mt-2 rounded-circle p-2" style="background-color: black; color: white;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                </svg>
+              </section>
+            </div>
+          </div>
+          <div class="hamburger" onclick="MenuInstance.handleMenu();">
+            <section class="btnMenu mt-2 rounded-circle p-1" style="background-color: black; color: white;"style="background-color: black; color: white;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
               </svg>
             </section>
-            <section onclick="MenuInstance.handleCarrito();" class="mt-2 rounded-circle p-2 navbar-toggler1" style="background-color: black; color: white;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-              </svg>
-            </section>
-           
           </div>
         </div>
-
-        <div class="hamburger" onclick="MenuInstance.handleMenu();">
-          <section class="mt-2 rounded-circle p-1" style="background-color: black; color: white;"style="background-color: black; color: white;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-          </svg>
-        </section>
-        </div>
-
-      </div>
-          
       </nav>
-
       <ul class="menu">
         <li class="nav-item">
           <a title="Pagina Inicio" class="nav-link active" href="index.html">Inicio</a>
@@ -63,83 +53,93 @@
     </header>
     <div class="container contenedor-main">
       <div class="row container-data pt-2 pb-3" style="width: 100%;">
-          <div class="col c-listado">
-            <h3>Listado de productos</h3>
-            <div class="row">
-              <div class="col-md-4 col-sm-12 mb-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagen 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Título 1</h5>
-                        <p class="card-text">Descripción breve de la tarjeta.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                    </div>
-                </div>
-            </div>
+        <div class="col c-listado">
+          <h3>Listado de productos</h3>
+          <div class="row">
             <div class="col-md-4 col-sm-12 mb-4">
               <div class="card">
-                  <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagen 1">
-                  <div class="card-body">
-                      <h5 class="card-title">Título 1</h5>
-                      <p class="card-text">Descripción breve de la tarjeta.</p>
-                      <a href="#" class="btn btn-primary">Ver más</a>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4 col-sm-12 mb-4">
-            <div class="card">
                 <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagen 1">
                 <div class="card-body">
-                    <h5 class="card-title">Título 1</h5>
-                    <p class="card-text">Descripción breve de la tarjeta.</p>
-                    <a href="#" class="btn btn-primary">Ver más</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-          <div class="card">
-              <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagen 1">
-              <div class="card-body">
                   <h5 class="card-title">Título 1</h5>
                   <p class="card-text">Descripción breve de la tarjeta.</p>
                   <a href="#" class="btn btn-primary">Ver más</a>
+                </div>
               </div>
+            </div>
+            <div class="col-md-4 col-sm-12 mb-4">
+              <div class="card">
+                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagen 1">
+                <div class="card-body">
+                  <h5 class="card-title">Título 1</h5>
+                  <p class="card-text">Descripción breve de la tarjeta.</p>
+                  <a href="#" class="btn btn-primary">Ver más</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12 mb-4">
+              <div class="card">
+                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagen 1">
+                <div class="card-body">
+                  <h5 class="card-title">Título 1</h5>
+                  <p class="card-text">Descripción breve de la tarjeta.</p>
+                  <a href="#" class="btn btn-primary">Ver más</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12 mb-4">
+                <div class="card">
+                  <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagen 1">
+                  <div class="card-body">
+                    <h5 class="card-title">Título 1</h5>
+                    <p class="card-text">Descripción breve de la tarjeta.</p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                  </div>
+                </div>
+            </div>
           </div>
+        </div>
       </div>
-            </div>
-            <!-- <img style="width: 100%;" alt="Trump acepta reconstruir el Muro de Berlín" src="assets/img/noticia1.webp" />
-              <a title="Trump acepta reconstruir el Muro de Berlín" href="noticia1.html">
-              <h4 class="text-center">Trump acepta reconstruir el Muro de Berlín</h4>
-              </a>
-              <p class="d-noticia">
-                  A propósito de los 30 años de la caída de muro que dividió las dos Alemanias, 
-                  un grupo sin fines de lucro envió a la Casa Blanca un pedazo de esa histórica 
-                  barrera al presidente de EEUU con un hermoso mensaje. Trump lo rechazó y ahora está frente a una sección de la barrera entre México y EEUU en San Ysidro.
-              </p> -->
-          </div>
-          <div class="col-3 c-carrito" style="border: 1px solid blue; display: none;">
-            <h3>Carrito compras</h3>
-            <div>
-              <section></section>
-              <section></section>
-            </div>
-              <!-- <section class="col text-center">
-                  <img alt="El Real Madrid, con la historia a favor" src="assets/img/noticia3.webp" />
-                  <a title="El Real Madrid, con la historia a favor" href="noticia3.html">
-                  <h6 class="text-center">El Real Madrid, con la historia a favor</h6>
-                  </a>
-              </section>
-              <section class="col text-center">
-                  <img alt="La inteligencia artificial se convierte en arma de la ultraderecha en su batalla por el relato" src="assets/img/noticia4.jpeg" />
-                  <a title="La inteligencia artificial" href="noticia4.html">
-                  <h6 class="text-center">La inteligencia artificial se convierte en arma de la ultraderecha en su batalla por el relato</h6>
-                  </a>
-              </section> -->
-          </div>
+    </div>
+    <div class="content-carrito" id="contentCarrito">
+      <div class="cerrar" onclick="MenuInstance.handleClosedCarrito();">
+        <section class="mt-2 rounded-circle p-1" style="background-color: white; color: black;"style="background-color: black; color: white;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+          </svg>
+        </section>
+      </div>
+      <div class="py-3 mt-1" style="width: 85%;">
+        <div class="text-center"><h5>Cesta</h5></div>
+        <div class="car-items mt-5">
+          <section class="car-item col-sm-12">
+            <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagen 1">
+            <section class="card-body1">
+              <h5 class="card-title">Título 1</h5>
+              <p class="card-text">Descripción breve de la tarjeta.</p>
+            </section>
+          </section>
+          <hr />
+          <section class="car-item col-sm-12">
+            <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagen 1">
+            <section class="card-body1">
+              <h5 class="card-title">Título 2</h5>
+              <p class="card-text">Descripción breve de la tarjeta.</p>
+            </section>
+          </section>
+          <hr />
+          <section class="car-item col-sm-12">
+            <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagen 1">
+            <section class="card-body1">
+              <h5 class="card-title">Título 2</h5>
+              <p class="card-text">Descripción breve de la tarjeta.</p>
+            </section>
+          </section>
+        </div>
+        
       </div>
     </div>
     <footer class="text-center py-5">
-      <div>Copyright © 2025 UAH - UX</div>
+      <div>Copyright © 2025 UAH - Frontend</div>
     </footer>
   </body>
 </html>

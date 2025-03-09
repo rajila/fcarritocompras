@@ -59,7 +59,7 @@ header {
     color: white;
     font-size: 18px;
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.8s ease-out;
 }
 
 .icons a:hover {
@@ -69,11 +69,47 @@ header {
 /* Botón de menú hamburguesa */
 .hamburger {
     display: none;
+}
+
+.btnMenu {
+    cursor: pointer;
+}
+
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    border: none;
+    border-radius: 50%;
     cursor: pointer;
 }
 
 .container-data {
     min-height: 50%;
+}
+
+.content-carrito {
+    width: 35%;
+    height: 100vh; /* Ocupa todo el alto de la pantalla */
+    background: #333333fc;
+    color: white;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: -100%; /* Inicia fuera de la pantalla */
+    transition: right 0.8s ease-out;
+}
+
+.col-8 {
+    transition: right 0.8s step-end;
+}
+
+/* Clase para mostrar el contenedor */
+.mostrar {
+    right: 0; /* Se desliza hacia adentro */
 }
 
 /* Estilos responsive */
@@ -93,14 +129,20 @@ header {
         text-align: center;
         padding: 10px 0;
         border-bottom: 1px solid #90929a;
+        transition: max-height 0.9s ease-in-out;
     }
 
     .menu.active {
         display: flex;
+        max-height: 200px; /* Ajusta según el número de elementos */
     }
 
     .menu li {
         padding: 10px 0;
+    }
+
+    .content-carrito {
+        width: 75%;
     }
 }
 /*Fin menu*/
@@ -110,19 +152,21 @@ header {
     text-align: center;
 }
 
-
 html, body {
     height: 100%;
     margin: 0;
 }
+
 .contenedor-main {
     display: flex;
     flex-direction: column;
-    min-height: 75vh;
+    min-height: 100vh;
 }
+
 main, .container-data {
     flex: 1;
 }
+
 footer {
     background: #333;
     color: white;

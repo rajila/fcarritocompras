@@ -4,8 +4,20 @@ class Menu {
         menu.classList.toggle("active")
     }
 
-    handleCarrito() {
-        alert("Carrito compras: en desarrollo")
+    handleOpenCarrito() {
+        document.getElementById("contentCarrito").classList.add("mostrar")
+        const menu = document.querySelector(".menu")
+        if (menu.classList.contains("active")){
+            menu.classList.toggle("active")
+        }
+        // const cListado = document.querySelector(".c-listado")
+        // cListado.classList.remove("col")
+        // cListado.classList.add("col-8")
+    }
+
+    handleClosedCarrito() {
+        document.getElementById("contentCarrito").classList.remove("mostrar")
+        //document.querySelector(".c-listado").classList.remove("col-8").add("col")
     }
 
 }
