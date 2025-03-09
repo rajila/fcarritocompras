@@ -13,6 +13,12 @@ footer {
     padding: 5px 10px;
 }
 
+.cabecera {
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
 a.active {
     font-weight: bold;
     text-decoration: underline;
@@ -87,6 +93,7 @@ header {
 
 .container-data {
     min-height: 50%;
+    margin-top: 100px;
 }
 
 .content-carrito {
@@ -98,7 +105,7 @@ header {
     /* align-items: center; */
     justify-content: center;
     position: fixed;
-    top: 0;
+    top: 0px;
     right: -100%; /* Inicia fuera de la pantalla */
     transition: right 0.8s ease-out;
 }
@@ -152,6 +159,14 @@ header {
     .adminSalir {
         visibility:visible !important;
     }
+
+    .content-carrito {
+        top: 62px
+    }
+
+    .cerrar {
+        display: none;
+    }
 }
 /*Fin menu*/
 
@@ -199,4 +214,9 @@ footer {
 
 .adminSalir {
     visibility: hidden;
+}
+
+.c-logo{
+    display: flex;
+    align-items: baseline;
 }

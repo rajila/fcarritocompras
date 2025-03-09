@@ -10,10 +10,19 @@
     <link href="assets/css/style.css" rel="stylesheet"/>
   </head>
   <body>
-    <header class="">
+    <header class="cabecera">
       <nav class="container navbar h-menu">
-        <div class="logo">
-          <a class="navbar-brand content-logo-texto" href="index.html">Book's Shop</a>
+        <div class="c-logo">
+          <div class="hamburger me-2" onclick="MenuInstance.handleMenu();">
+            <section class="btnMenu mt-2 rounded-circle p-1" style="background-color: black; color: white;"style="background-color: black; color: white;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+              </svg>
+            </section>
+          </div>
+          <div class="logo">
+            <a class="navbar-brand content-logo-texto" href="index.html">Book's Shop</a>
+          </div>
         </div>
         <div style="justify-content: end; display: flex;">
           <div class="icons">
@@ -30,13 +39,13 @@
               </section>
             </div>
           </div>
-          <div class="hamburger" onclick="MenuInstance.handleMenu();">
+          <!-- <div class="hamburger" onclick="MenuInstance.handleMenu();">
             <section class="btnMenu mt-2 rounded-circle p-1" style="background-color: black; color: white;"style="background-color: black; color: white;">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
               </svg>
             </section>
-          </div>
+          </div> -->
         </div>
       </nav>
       <ul class="menu">
@@ -55,7 +64,7 @@
       </ul>
     </header>
     <div class="container contenedor-main">
-      <div class="row container-data pt-2 pb-3" style="width: 100%;">
+      <div class="container-data pt-2 pb-3" style="width: 100%;">
         <div class="col c-listado">
           <h3>Listado de productos</h3>
           <div class="row">

@@ -5,7 +5,8 @@ class Menu {
     }
 
     handleOpenCarrito() {
-        document.getElementById("contentCarrito").classList.add("mostrar")
+        //document.getElementById("contentCarrito").classList.add("mostrar")
+        document.getElementById("contentCarrito").classList.toggle("mostrar")
         const menu = document.querySelector(".menu")
         if (menu.classList.contains("active")){
             menu.classList.toggle("active")
