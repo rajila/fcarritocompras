@@ -161,12 +161,17 @@ header {
     }
 
     .content-carrito {
-        top: 62px
+        top: 61px
     }
 
     .cerrar {
         display: none;
     }
+
+    .container-data {
+        margin-top: 63px;
+    }
+    
 }
 /*Fin menu*/
 
