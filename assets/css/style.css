@@ -144,6 +144,14 @@ header {
     .content-carrito {
         width: 75%;
     }
+
+    .admin {
+        visibility:hidden !important;
+    }
+
+    .adminSalir {
+        visibility:visible !important;
+    }
 }
 /*Fin menu*/
 
@@ -175,4 +183,20 @@ footer {
 
 .card {
     position: inherit !important;
+}
+
+.show {
+    display: none;
+}
+
+.hide {
+    display: contents;
+}
+
+.admin {
+    visibility: visible;
+}
+
+.adminSalir {
+    visibility: hidden;
 }
