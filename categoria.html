@@ -10,6 +10,7 @@
     <script src="assets/js/model.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/menu.js"></script>
+    <script src="assets/js/view/categoriaView.js"></script>
     <link href="assets/css/style.css" rel="stylesheet"/>
   </head>
   <body>
@@ -46,13 +47,13 @@
       </nav>
       <ul class="menu">
         <li class="nav-item">
-          <a title="Pagina Inicio" class="nav-link active" href="index.html">Inicio</a>
+          <a title="Pagina Inicio" class="nav-link" href="index.html">Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="producto.html">Productos</a>
+            <a class="nav-link" href="noticia1.html">Productos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="categoria.html">Categorias</a>
+            <a class="nav-link active" href="categoria.html">Categorias</a>
         </li>
         <li class="nav-item adminSalir">
           <a class="nav-link" href="noticia2.html">Salir</a>
@@ -62,49 +63,24 @@
     <div class="container contenedor-main">
       <div class="container-data pt-2 pb-3" style="width: 100%;">
         <div class="col c-listado">
-          <h3>Listado de productos</h3>
-          <div class="row">
-            <div class="col-md-4 col-sm-12 mb-4">
-              <div class="card">
-                <img src="" class="card-img-top" alt="Imagen 1">
-                <div class="card-body">
-                  <h5 class="card-title">Título 1</h5>
-                  <p class="card-text">Descripción breve de la tarjeta.</p>
-                  <a href="#" class="btn btn-primary">Ver más</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-12 mb-4">
-              <div class="card">
-                <img src="" class="card-img-top" alt="Imagen 1">
-                <div class="card-body">
-                  <h5 class="card-title">Título 1</h5>
-                  <p class="card-text">Descripción breve de la tarjeta.</p>
-                  <a href="#" class="btn btn-primary">Ver más</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-12 mb-4">
-              <div class="card">
-                <img src="" class="card-img-top" alt="Imagen 1">
-                <div class="card-body">
-                  <h5 class="card-title">Título 1</h5>
-                  <p class="card-text">Descripción breve de la tarjeta.</p>
-                  <a href="#" class="btn btn-primary">Ver más</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-12 mb-4">
-                <div class="card">
-                  <img src="" class="card-img-top" alt="Imagen 1">
-                  <div class="card-body">
-                    <h5 class="card-title">Título 1</h5>
-                    <p class="card-text">Descripción breve de la tarjeta.</p>
-                    <a href="#" class="btn btn-primary">Ver más</a>
-                  </div>
-                </div>
-            </div>
+          <h3>Listado de Categorias</h3>
+          <div class="text-end">
+            <button onclick="CategoriaViewInstance.handleNuevo();" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm" data-bs-whatever="@mdo">Nuevo</button>
           </div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col" class="col-auto" sec:authorize="hasAuthority('ADMIN')">&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+        </div>
         </div>
       </div>
     </div>
@@ -149,8 +125,58 @@
     <footer class="text-center py-5">
       <div>Copyright © 2025 UAH - Frontend</div>
     </footer>
+    
+
+
+    <div class="modal fade" data-bs-backdrop="static" id="modalForm" tabindex="-1" aria-labelledby="formTitle" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="formTitle"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="formData">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nombre <span class="text-danger">*</span></label>
+                <input type="hidden" id="idData" />
+                <input type="text" class="form-control" id="txtNombre" placeholder="Ingresar Nombre">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button onclick="CategoriaViewInstance.handleGuardar();" type="button" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" data-bs-backdrop="static" id="modalDelete" tabindex="-1" aria-labelledby="formTitle" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="formTitle">Eliminar Categoria</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Esta seguro de eliminar la categoria "<span class="fw-bold" id="data-delete-txt"></span>"</label>
+              <input type="hidden" id="idDataDelete" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button onclick="CategoriaViewInstance.handleDelete();" type="button" class="btn btn-danger">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
     <script>
       MainInstance.init()
+      CategoriaViewInstance.init()
     </script>
   </body>
 </html>
