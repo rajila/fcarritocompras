@@ -46,7 +46,7 @@ class Menu {
         let modal = bootstrap.Modal.getInstance(document.getElementById('modalLogin'));
         let user = document.getElementById("user").value
         let password = document.getElementById("password").value
-        if (`${user}`.toLowerCase() ==="admin" && `${password}` === "12345") {
+        if (`${user}`.toLowerCase() ==="admin" && `${password}` === "123456") {
             LocalStorageCustomInstance.setData(ConstantsInstance.LOGIN, 'S')
             this.init()
             modal.hide()
