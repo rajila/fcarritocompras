@@ -1,11 +1,14 @@
 class CategoriaView {
     init() {
+        // Verificamos si hay login
+        let isLogin = LocalStorageCustomInstance.getLogin(ConstantsInstance.LOGIN)
+        if (isLogin==="N") window.location.href = "/"
+
         this.dibujarLista()
     }
 
     dibujarLista() {
         let dataList = [ ...CategoriaListInstance.getAll() ]
-        console.log(dataList)
         let elTableBody = document.querySelector(".table-responsive > .table tbody")
         elTableBody.innerHTML = ''
         dataList.forEach(el => {
@@ -14,12 +17,15 @@ class CategoriaView {
             let elNombre = document.createElement("td")
             let elNumProductos = document.createElement("td")
             let elBtns = document.createElement("td")
+
+            let nroProd = ProductoListInstance.getAllByCategoria(el.id).length
+            elBtns.classList.add("text-end")
             elId.innerHTML = `${el.id}`
             elNombre.innerHTML = `${el.nombre}`
             elNumProductos.innerHTML = `${el.nroproductos}`
             elBtns.innerHTML = `
                 <input data-bs-toggle="modal" data-bs-target="#modalForm" data-bs-whatever="@mdo" class='btn btn-primary' type='button' value='Editar' onclick="CategoriaViewInstance.handleEditar('${el.id}')" />
-                <input data-bs-toggle="modal" data-bs-target="#modalDelete" data-bs-whatever="@mdo" class='btn btn-danger' type='button' value='Eliminar' onclick="CategoriaViewInstance.handleEliminar('${el.id}')" />`
+                <input data-bs-toggle="modal" data-bs-target="#modalDelete" data-bs-whatever="@mdo" class='btn btn-danger ${nroProd===0?'':'hideElement'}' type='button' value='Eliminar' onclick="CategoriaViewInstance.handleEliminar('${el.id}')" />`
             
             elTr.appendChild(elId)
             elTr.appendChild(elNombre)
@@ -81,8 +87,8 @@ class CategoriaView {
             this.dibujarLista()
             modal.hide()
             this.resetForm()
-        }else {
-            alert("error al guardar!!")
+        } else {
+            alert("Error, verifique todos los campos!!")
         }
     }
 

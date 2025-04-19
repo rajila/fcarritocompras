@@ -6,6 +6,12 @@ class Constants {
     // Control de productoss
     PRODUCTO_LIST_LBL = "PRODUCTO_LIST"
     PRODUCTO_LIST_DIM_LBL = "PRODUCTO_LIST_DIM"
+    // Control de carrito
+    CART_LIST_LBL = "CART_LIST"
+    CART_LIST_DIM_LBL = "CART_LIST_DIM"
+
+    // Login
+    LOGIN = "LOGIN"
 }
 
 const ConstantsInstance = new Constants()
@@ -26,6 +32,10 @@ class LocalStorageCustom {
 
     setData(key, data){
         localStorage.setItem(key, data)
+    }
+
+    getLogin(key){
+        return localStorage.getItem(key) !== null ? localStorage.getItem(key).trim() : 'N'
     }
 }
 

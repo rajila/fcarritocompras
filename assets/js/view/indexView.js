@@ -21,7 +21,10 @@ class IndexView {
         elContenedor.classList.add("col-md-3", "col-sm-12", "mb-3")
 
         let elCard = document.createElement("div")
+        elCard.setAttribute("id", `card-${dataProducto.id}`)
         elCard.classList.add("card")
+        if ( dataProducto.stock === 0 ) elCard.classList.add("card-red")
+        else elCard.classList.remove("card-red")
 
         let elTitle = document.createElement("div")
         elTitle.classList.add("text-center", "title-content")
@@ -37,18 +40,20 @@ class IndexView {
         elCard.appendChild(elImg)
 
         let elPortada = document.createElement("img")
+        elPortada.setAttribute("id", `img-${dataProducto.id}`)
         elPortada.setAttribute("src", dataProducto.imagen)
         elPortada.setAttribute("alt", dataProducto.nombre)
         elPortada.classList.add("card-img")
+        if ( dataProducto.stock === 0 ) elPortada.classList.add("img-trans")
+        else elPortada.classList.remove("img-trans")
         elImg.appendChild(elPortada)
 
         let elCardBody = document.createElement("div")
         elCardBody.classList.add("card-body")
 
         let elCardStock = document.createElement("p")
-        //elCardStock.setAttribute(`id-stock-${dataProducto.id}`, `${dataProducto.stock}`)
         elCardStock.classList.add("card-text")
-        elCardStock.innerHTML = `<b>Stock: </b><span id-stock-${dataProducto.id}=${dataProducto.stock} >${dataProducto.stock}</span>`
+        elCardStock.innerHTML = `<b>Stock: </b><span id="stock-${dataProducto.id}">${dataProducto.stock}</span>`
         elCardBody.appendChild(elCardStock)
 
         let elCardPrecio = document.createElement("p")
@@ -65,10 +70,14 @@ class IndexView {
         elBotones.classList.add("text-center")
         elCard.appendChild(elBotones)
 
-        let elCardAddCart = document.createElement("a")
+        let elCardAddCart = document.createElement("button")
         elCardAddCart.setAttribute("href", "#")
+        elCardAddCart.setAttribute("id", `btn-add-${dataProducto.id}`)
         elCardAddCart.classList.add("btn","btn-primary")
+        elCardAddCart.addEventListener("click",(e) => IndexViewInstance.handleAddCart(dataProducto.id))
         elCardAddCart.innerHTML = `Añadir carrito`
+        if ( dataProducto.stock === 0 ) elCardAddCart.disabled = true
+        else elCardAddCart.disabled = false
         elBotones.appendChild(elCardAddCart)
         elCardBody.appendChild(elBotones)
 
@@ -77,38 +86,26 @@ class IndexView {
         elContenedorListado.appendChild(elContenedor)
     }
 
-    handleEditar(id) {
-        document.getElementById("formTitle").innerHTML = 'Editar Categoria'
-        let data = CategoriaListInstance.getById(id)
-        if (data) {
-            document.getElementById("idData").value = data.id
-            document.getElementById("txtNombre").value = data.nombre
+    handleAddCart(id) {
+        let producto = ProductoListInstance.getById(id)
+        if (producto && producto.stock > 0) {
+            let cart = new CartItem(producto, 1)
+            CartListInstance.add(cart)
+            producto.stock--
+            ProductoListInstance.update(producto)
+            document.getElementById(`stock-${producto.id}`).innerHTML = `${producto.stock}`
+            if ( producto.stock === 0 ) {
+                document.getElementById(`card-${producto.id}`).classList.add("card-red")
+                document.getElementById(`btn-add-${producto.id}`).disabled = true
+            } else {
+                document.getElementById(`card-${producto.id}`).classList.remove("card-red")
+                document.getElementById(`btn-add-${producto.id}`).disabled = false
+            }
+            // Dibujamos en panel de carrito
+            CartViewInstance.dibujarLista()
+        } else {
+            alert(`El libro "${producto.nombre || 'XXX'}" no disponible!!`)
         }
-    }
-
-    handleEliminar(id) {
-        let data = CategoriaListInstance.getById(id)
-        if (data) {
-            document.getElementById("idDataDelete").value = data.id
-            document.getElementById("data-delete-txt").innerHTML = data.nombre
-        }
-    }
-
-    handleDelete() {
-        let id = document.getElementById("idDataDelete").value
-        if (!isNaN(parseInt(id))) {
-            let modal = bootstrap.Modal.getInstance(document.getElementById('modalDelete'));
-            CategoriaListInstance.deleteById(parseInt(id))
-            CategoriaViewInstance.dibujarLista()
-            modal.hide()
-        }else {
-            alert("error al eliminar categoria")
-        }
-    }
-
-    handleNuevo() {
-        CategoriaViewInstance.resetForm()
-        document.getElementById("formTitle").innerHTML = 'Nueva Categoria'
     }
 
     handleCategoriaChange() {

@@ -139,10 +139,19 @@ header {
     height: 260px;
 }
 
+.card-img-cart{
+    /* width: 3.5rem;
+    height: 80px; */
+    width: 3.2rem;
+    height: 4.4rem;
+}
+
 .content-img {
     margin-top: 0px;
     text-align: center;
     width: 100%;
+    /* position: relative;
+    display: inline-block; */
 }
 
 .title-content {
@@ -164,6 +173,28 @@ header {
 
 .text-j {
     text-align: justify;
+}
+
+.img-trans {
+    /* opacity: 0.9; */
+}
+
+.card-red {
+    background-color: rgb(245 208 201 / 10%);
+    border: 1px solid tomato;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.3); /* Velo blanco */
+    pointer-events: none;
+}
+
+#details-cart p {
+    margin: 0px !important;
 }
 
 /* Estilos responsive */

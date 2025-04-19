@@ -12,6 +12,7 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/view/productoView.js"></script>
+    <script src="assets/js/view/cartView.js"></script>
     <link href="assets/css/style.css" rel="stylesheet"/>
   </head>
   <body>
@@ -32,9 +33,15 @@
         <div style="justify-content: end; display: flex;">
           <div class="icons">
             <div class="mx-0" style="display: flex;">
-              <section class="btnMenu admin mt-2 mx-2 rounded-circle p-2" style="background-color: black; color: white;"style="background-color: black; color: white;">
+              <section id="btn-login" data-bs-toggle="modal" data-bs-target="#modalLogin" data-bs-whatever="@mdo" class="btnMenu mx-2 admin1 mt-2 rounded-circle p-2" style="background-color: black; color: white;"style="background-color: black; color: white;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
                   <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4m9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
+                </svg>
+              </section>
+              <section id="btn-logout" onclick="MenuInstance.logout();" class="btnMenu mx-2 mt-2 rounded-circle p-2" style="background-color: black; color: white;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
                 </svg>
               </section>
               <section onclick="MenuInstance.handleOpenCarrito();" class="btnMenu mt-2 rounded-circle p-2" style="background-color: black; color: white;">
@@ -56,9 +63,9 @@
         <li class="nav-item">
             <a class="nav-link" href="categoria.html">Categorias</a>
         </li>
-        <li class="nav-item adminSalir">
+        <!-- <li class="nav-item adminSalir">
           <a class="nav-link" href="noticia2.html">Salir</a>
-      </li>
+      </li> -->
       </ul>
     </header>
     <div class="container contenedor-main">
@@ -99,32 +106,17 @@
       </div>
       <div class="py-3 mt-1" style="width: 85%;">
         <div class="text-center"><h5>Cesta</h5></div>
-        <div class="car-items mt-5">
-          <section class="car-item col-sm-12">
-            <img src="" class="card-img-top" alt="Imagen 1">
-            <section class="card-body1">
-              <h5 class="card-title">Título 1</h5>
-              <p class="card-text">Descripción breve de la tarjeta.</p>
-            </section>
-          </section>
-          <hr />
-          <section class="car-item col-sm-12">
-            <img src="" class="card-img-top" alt="Imagen 1">
-            <section class="card-body1">
-              <h5 class="card-title">Título 2</h5>
-              <p class="card-text">Descripción breve de la tarjeta.</p>
-            </section>
-          </section>
-          <hr />
-          <section class="car-item col-sm-12">
-            <img src="" class="card-img-top" alt="Imagen 1">
-            <section class="card-body1">
-              <h5 class="card-title">Título 2</h5>
-              <p class="card-text">Descripción breve de la tarjeta.</p>
-            </section>
-          </section>
+        <div id="siCesta" class="hideElement">
+          <div id="details-cart" class="car-items mt-5">
+          </div>
+          <div class="car-items mt-3 text-end">
+            <b>Total: </b> <span id="total-cesta"></span> €
+          </div>
+          <div class="car-items mt-3 text-center">
+            <button data-bs-toggle="modal" data-bs-target="#modalPagar" data-bs-whatever="@mdo" class="btn btn-primary" id="btn-pagar" onclick="CartViewInstance.handleLaodModalPagar()">Realizar pedido</button>
+          </div>
         </div>
-        
+        <div id="noCesta" class="showElement text-center mt-5">Cesta vacía <span style='font-size:25px;'>&#128546;&#128546;</span></div>
       </div>
     </div>
     <footer class="text-center py-5">
@@ -200,10 +192,60 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal de pagar-->
+    <div class="modal fade" data-bs-backdrop="static" id="modalPagar" tabindex="-1" aria-labelledby="formTitle" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="formTitle">Confirmar pago</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Esta seguro de realizar el pago de <span class="fw-bold" id="data-pago"></span> €</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button onclick="CartViewInstance.handlePagar();" type="button" class="btn btn-primary">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Admin -->
+    <div class="modal fade" data-bs-backdrop="static" id="modalLogin" tabindex="-1" aria-labelledby="formTitle" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="formTitle">Login</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="formData">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Usuario</label>
+                <input type="hidden" id="idData" />
+                <input type="text" class="form-control" id="user" placeholder="Ingresar Usuario">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="Ingresar contraseña">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button onclick="MenuInstance.login();" type="button" class="btn btn-primary">Ingresar</button>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <script>
       MainInstance.init()
+      MenuInstance.init()
       ProductoViewInstance.init()
+      CartViewInstance.init()
     </script>
   </body>
 </html>

@@ -1,5 +1,9 @@
 class ProductoView {
     init() {
+        // Verificamos si hay login
+        let isLogin = LocalStorageCustomInstance.getLogin(ConstantsInstance.LOGIN)
+        if (isLogin==="N") window.location.href = "/"
+
         this.dibujarLista()
         this.loadCategorias()
     }
@@ -19,6 +23,10 @@ class ProductoView {
             let elStock = document.createElement("td")
             let elImagen = document.createElement("td")
             let elBtns = document.createElement("td")
+
+            let enCarrito = CartListInstance.getByProductoId(el.id)
+
+            elBtns.classList.add("text-end")
             elId.innerHTML = `${el.id}`
             elCodigo.innerHTML = `${el.codigo}`
             elNombre.innerHTML = `${el.nombre}`
@@ -28,7 +36,7 @@ class ProductoView {
             elImagen.innerHTML = `<img className="size-32" src='${el.imagen}' />`
             elBtns.innerHTML = `
                 <input data-bs-toggle="modal" data-bs-target="#modalForm" data-bs-whatever="@mdo" class='btn btn-primary' type='button' value='Editar' onclick="ProductoViewInstance.handleEditar('${el.id}')" />
-                <input data-bs-toggle="modal" data-bs-target="#modalDelete" data-bs-whatever="@mdo" class='btn btn-danger' type='button' value='Eliminar' onclick="ProductoViewInstance.handleEliminar('${el.id}')" />`
+                <input data-bs-toggle="modal" data-bs-target="#modalDelete" data-bs-whatever="@mdo" class='btn btn-danger ${enCarrito?'hideElement':''}' type='button' value='Eliminar' onclick="ProductoViewInstance.handleEliminar('${el.id}')" />`
 
             elTr.appendChild(elId)
             elTr.appendChild(elCodigo)
@@ -89,7 +97,8 @@ class ProductoView {
     }
 
     async handleGuardar() {
-        if (this.isValid()) {
+        let _valid = await this.isValid()
+        if (_valid) {
             let modal = bootstrap.Modal.getInstance(document.getElementById('modalForm'));
             let id = document.getElementById("idData").value
             let valueCodigo = document.getElementById("txtCodigo").value
@@ -113,7 +122,7 @@ class ProductoView {
 
             id = isNaN(parseInt(id)) ? 0 : parseInt(id)
 
-            let producto = new Producto(id, valueCodigo, valueNombre, imagenB64, descripcion, precio, stock, parseInt(categoriaId))
+            let producto = new Producto(id, valueCodigo, valueNombre, imagenB64, descripcion, parseInt(precio), parseInt(stock), parseInt(categoriaId))
 
             if (id > 0) {
                 ProductoListInstance.update(producto)
@@ -125,7 +134,7 @@ class ProductoView {
             modal.hide()
             this.resetForm()
         }else {
-            alert("error al guardar!!")
+            alert("Error, verifique todos los campos!!")
         }
     }
 
@@ -142,7 +151,6 @@ class ProductoView {
         document.getElementById("txtDescripcion").value = ''
         document.getElementById("txtImagen").value = ''
         document.getElementById("txtCategoria").value = '0'
-        //this.loadCategorias()
     }
 
     loadCategorias(idCategoria=0) {
@@ -154,12 +162,48 @@ class ProductoView {
         document.getElementById("txtCategoria").innerHTML = contentSelect
     }
 
-    isValid() {
+    async isValid() {
+        let id = document.getElementById("idData").value
         let valueNombre = document.getElementById("txtNombre").value
+        let precioVal = document.getElementById("txtPrecio").value
+        let stockVal = document.getElementById("txtStock").value
+        let imagen = document.getElementById("txtImagen")
+        let descripcionVal = document.getElementById("txtDescripcion").value
+        let categoriaId = document.getElementById("txtCategoria").value
+
+        let imagenB64 = "existe"
+        try{
+            if ( parseInt(id) > 0 ) {
+                imagenB64 = "existe"
+            } else {
+                imagenB64 = await UtilInstance.FileToUrlBase64(imagen.files[0])
+            }
+        }catch(e) {
+            console.log(e)
+        }
+
         let result = true
         if (valueNombre.trim() === "") {
             result = false
         }
+        if (imagenB64.trim() === "") {
+            result = false
+        }
+        if (descripcionVal.trim() === "") {
+            result = false
+        }
+        if (parseInt(categoriaId) <= 0 || isNaN(parseInt(categoriaId))) {
+            result = false
+        }
+
+        if (parseInt(precioVal)<=0 || isNaN(parseInt(precioVal))) {
+            result = false
+        }
+
+        if (parseInt(stockVal)<=0 || isNaN(parseInt(stockVal))) {
+            result = false
+        }
+        
         return result
     }
 }
