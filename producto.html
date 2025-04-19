@@ -6,11 +6,12 @@
     <title>Aplicación de productos</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/util.js"></script>
     <script src="assets/js/global.js"></script>
     <script src="assets/js/model.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/menu.js"></script>
-    <script src="assets/js/view/categoriaView.js"></script>
+    <script src="assets/js/view/productoView.js"></script>
     <link href="assets/css/style.css" rel="stylesheet"/>
   </head>
   <body>
@@ -50,10 +51,10 @@
           <a title="Pagina Inicio" class="nav-link" href="index.html">Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="producto.html">Productos</a>
+            <a class="nav-link active" href="producto.html">Productos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="categoria.html">Categorias</a>
+            <a class="nav-link" href="categoria.html">Categorias</a>
         </li>
         <li class="nav-item adminSalir">
           <a class="nav-link" href="noticia2.html">Salir</a>
@@ -63,18 +64,21 @@
     <div class="container contenedor-main">
       <div class="container-data pt-2 pb-3" style="width: 100%;">
         <div class="col c-listado">
-          <h3>Listado de Categorias</h3>
+          <h3>Listado de Productos</h3>
           <div class="text-end">
-            <button onclick="CategoriaViewInstance.handleNuevo();" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm" data-bs-whatever="@mdo">Nuevo</button>
+            <button onclick="ProductoViewInstance.handleNuevo();" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm" data-bs-whatever="@mdo">Nuevo</button>
           </div>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">Id</th>
+                  <th scope="col">Código</th>
                   <th scope="col">Nombre</th>
-                  <th scope="col"># Productos</th>
-                  <th scope="col" class="col-auto">&nbsp;</th>
+                  <th scope="col">Categoria</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Stock</th>
+                  <th scope="col" class="col-auto" sec:authorize="hasAuthority('ADMIN')">&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
@@ -135,17 +139,43 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form id="formData">
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Nombre <span class="text-danger">*</span></label>
+            <form id="formData" class="row g-3">
+              <div class="col-md-3">
+                <label for="recipient-codigo" class="col-form-label">Código <span class="text-danger">*</span></label>
                 <input type="hidden" id="idData" />
+                <input type="text" disabled class="form-control" id="txtCodigo" placeholder="Ingresar Código">
+              </div>
+              <div class="col-md-9">
+                <label for="recipient-name" class="col-form-label">Nombre <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="txtNombre" placeholder="Ingresar Nombre">
+              </div>
+              <div class="col-md-12">
+                <label for="recipient-name" class="col-form-label">Categoria <span class="text-danger">*</span></label>
+                <select class="form-control" id="txtCategoria"></select>
+              </div>
+              <div class="col-md-6">
+                <label for="recipient-name" class="col-form-label">Precio <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="txtPrecio" placeholder="Ingresar Precio">
+              </div>
+              <div class="col-md-6">
+                <label for="recipient-stock" class="col-form-label">Stock <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="txtStock" placeholder="Ingresar Stock">
+              </div>
+              <div class="col-md-12">
+                <label for="recipient-imagen" class="col-form-label">Imagen <span class="text-danger">*</span></label>
+                <input type="hidden" class="form-control" id="txtImagenB64" />
+                <img class="hideElement imgForm" id="imagenB64" src=""  />
+                <input type="file" class="form-control" id="txtImagen" placeholder="Ingresar Nombre">
+              </div>
+              <div class="col-md-12">
+                <label for="recipient-descripcion" class="col-form-label">Descripción <span class="text-danger">*</span></label>
+                <textarea class="form-control" placeholder="Descripción del producto" id="txtDescripcion"></textarea>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button onclick="CategoriaViewInstance.handleGuardar();" type="button" class="btn btn-primary">Guardar</button>
+            <button onclick="ProductoViewInstance.handleGuardar();" type="button" class="btn btn-primary">Guardar</button>
           </div>
         </div>
       </div>
@@ -165,7 +195,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button onclick="CategoriaViewInstance.handleDelete();" type="button" class="btn btn-danger">Aceptar</button>
+            <button onclick="ProductoViewInstance.handleDelete();" type="button" class="btn btn-danger">Aceptar</button>
           </div>
         </div>
       </div>
@@ -173,7 +203,7 @@
     
     <script>
       MainInstance.init()
-      CategoriaViewInstance.init()
+      ProductoViewInstance.init()
     </script>
   </body>
 </html>

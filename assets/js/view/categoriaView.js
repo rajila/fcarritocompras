@@ -12,15 +12,18 @@ class CategoriaView {
             let elTr = document.createElement("tr")
             let elId = document.createElement("td")
             let elNombre = document.createElement("td")
+            let elNumProductos = document.createElement("td")
             let elBtns = document.createElement("td")
             elId.innerHTML = `${el.id}`
             elNombre.innerHTML = `${el.nombre}`
+            elNumProductos.innerHTML = `${el.nroproductos}`
             elBtns.innerHTML = `
                 <input data-bs-toggle="modal" data-bs-target="#modalForm" data-bs-whatever="@mdo" class='btn btn-primary' type='button' value='Editar' onclick="CategoriaViewInstance.handleEditar('${el.id}')" />
                 <input data-bs-toggle="modal" data-bs-target="#modalDelete" data-bs-whatever="@mdo" class='btn btn-danger' type='button' value='Eliminar' onclick="CategoriaViewInstance.handleEliminar('${el.id}')" />`
             
             elTr.appendChild(elId)
             elTr.appendChild(elNombre)
+            elTr.appendChild(elNumProductos)
             elTr.appendChild(elBtns)
             elTableBody.appendChild(elTr)
         })

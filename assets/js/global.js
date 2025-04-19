@@ -1,7 +1,11 @@
 class Constants {
     INIT_DATA_LBL = "INIT_DATA"
+    // Control de categoras
     CATEGORIA_LIST_LBL = "CATEGORIA_LIST"
     CATEGORIA_LIST_DIM_LBL = "CATEGORIA_LIST_DIM"
+    // Control de productoss
+    PRODUCTO_LIST_LBL = "PRODUCTO_LIST"
+    PRODUCTO_LIST_DIM_LBL = "PRODUCTO_LIST_DIM"
 }
 
 const ConstantsInstance = new Constants()
