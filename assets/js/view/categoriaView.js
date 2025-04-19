@@ -1,6 +1,6 @@
 class CategoriaView {
     init() {
-        CategoriaViewInstance.dibujarLista()
+        this.dibujarLista()
     }
 
     dibujarLista() {
@@ -59,12 +59,12 @@ class CategoriaView {
     }
 
     handleNuevo() {
-        CategoriaViewInstance.resetForm()
+        this.resetForm()
         document.getElementById("formTitle").innerHTML = 'Nueva Categoria'
     }
 
     handleGuardar(){
-        if (CategoriaViewInstance.isValid()) {
+        if (this.isValid()) {
             let modal = bootstrap.Modal.getInstance(document.getElementById('modalForm'));
             let id = document.getElementById("idData").value
             let valueNombre = document.getElementById("txtNombre").value
@@ -78,9 +78,9 @@ class CategoriaView {
                 CategoriaListInstance.add(categoria)
             }
 
-            CategoriaViewInstance.dibujarLista()
+            this.dibujarLista()
             modal.hide()
-            CategoriaViewInstance.resetForm()
+            this.resetForm()
         }else {
             alert("error al guardar!!")
         }

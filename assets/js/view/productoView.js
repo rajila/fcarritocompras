@@ -112,9 +112,8 @@ class ProductoView {
             }
 
             id = isNaN(parseInt(id)) ? 0 : parseInt(id)
-            let _dim = LocalStorageCustomInstance.getDim(ConstantsInstance.PRODUCTO_LIST_DIM_LBL)
 
-            let producto = new Producto(id, valueCodigo, valueNombre, imagenB64, descripcion, precio, stock, categoriaId)
+            let producto = new Producto(id, valueCodigo, valueNombre, imagenB64, descripcion, precio, stock, parseInt(categoriaId))
 
             if (id > 0) {
                 ProductoListInstance.update(producto)

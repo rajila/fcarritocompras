@@ -10,6 +10,7 @@
     <script src="assets/js/model.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/menu.js"></script>
+    <script src="assets/js/view/indexView.js"></script>
     <link href="assets/css/style.css" rel="stylesheet"/>
   </head>
   <body>
@@ -63,47 +64,12 @@
       <div class="container-data pt-2 pb-3" style="width: 100%;">
         <div class="col c-listado">
           <h3>Listado de productos</h3>
-          <div class="row">
-            <div class="col-md-4 col-sm-12 mb-4">
-              <div class="card">
-                <img src="" class="card-img-top" alt="Imagen 1">
-                <div class="card-body">
-                  <h5 class="card-title">Título 1</h5>
-                  <p class="card-text">Descripción breve de la tarjeta.</p>
-                  <a href="#" class="btn btn-primary">Ver más</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-12 mb-4">
-              <div class="card">
-                <img src="" class="card-img-top" alt="Imagen 1">
-                <div class="card-body">
-                  <h5 class="card-title">Título 1</h5>
-                  <p class="card-text">Descripción breve de la tarjeta.</p>
-                  <a href="#" class="btn btn-primary">Ver más</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-12 mb-4">
-              <div class="card">
-                <img src="" class="card-img-top" alt="Imagen 1">
-                <div class="card-body">
-                  <h5 class="card-title">Título 1</h5>
-                  <p class="card-text">Descripción breve de la tarjeta.</p>
-                  <a href="#" class="btn btn-primary">Ver más</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-12 mb-4">
-                <div class="card">
-                  <img src="" class="card-img-top" alt="Imagen 1">
-                  <div class="card-body">
-                    <h5 class="card-title">Título 1</h5>
-                    <p class="card-text">Descripción breve de la tarjeta.</p>
-                    <a href="#" class="btn btn-primary">Ver más</a>
-                  </div>
-                </div>
-            </div>
+          <div class="text-end filtro">
+            <select class="form-select" style="width: 20%; display: inline;" id="categoria" onchange="IndexViewInstance.handleCategoriaChange()">
+              <option value="0">Todas Categorias</option>
+            </select>
+          </div>
+          <div class="row" id="contenedor-productos">
           </div>
         </div>
       </div>
@@ -151,6 +117,7 @@
     </footer>
     <script>
       MainInstance.init()
+      IndexViewInstance.init()
     </script>
   </body>
 </html>

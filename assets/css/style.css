@@ -134,6 +134,38 @@ header {
     right: 0; /* Se desliza hacia adentro */
 }
 
+.card-img{
+    width: 180px;
+    height: 260px;
+}
+
+.content-img {
+    margin-top: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+.title-content {
+    margin-top: 15px;
+}
+
+.content-img {
+    transition: transform 0.4s ease;
+}
+  
+.content-img:hover {
+    transform: scale(1.5);
+}
+
+.filtro {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.text-j {
+    text-align: justify;
+}
+
 /* Estilos responsive */
 @media (max-width: 768px) {
     .hamburger {
