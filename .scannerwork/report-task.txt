@@ -1,0 +1,6 @@
+projectKey=fcarritocompras
+serverUrl=http://localhost:9000
+serverVersion=9.9.5.90363
+dashboardUrl=http://localhost:9000/dashboard?id=fcarritocompras
+ceTaskId=AZcIdowe0xLw7qMR5af3
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AZcIdowe0xLw7qMR5af3
